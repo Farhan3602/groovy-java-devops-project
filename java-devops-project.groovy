@@ -9,4 +9,11 @@ pipeline {
             }
         }
     }
+    stage('List Remote Files') {
+            steps {
+                sshagent(['docker-server']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.200.16.136 "ls -la ~/"'
+                    }
+                }
+        }
 }
