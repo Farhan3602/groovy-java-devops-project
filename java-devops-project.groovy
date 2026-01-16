@@ -8,12 +8,12 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Farhan3602/Java-DevOps-Project'
             }
         }
-    }
-    stage('List Remote Files') {
+        stage('List Remote Files') {
             steps {
                 sshagent(['docker-server']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.200.16.136 "ls -la ~/"'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.232.181.188 "ls -la ~/"'
                     }
                 }
         }
+    }
 }
