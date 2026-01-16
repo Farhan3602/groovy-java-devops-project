@@ -14,8 +14,8 @@ pipeline {
             sh '''
                 ssh -o StrictHostKeyChecking=no \
                     -o UserKnownHostsFile=/dev/null \
-                    ec2-user@your-ec2-public-ip \
-                    "ls -la /home/ec2-user/"
+                    ec2-ubuntu@13.200.16.136 \
+                    "ls -la /home/ubuntu@ip-172-31-20-250/"
                 '''
             }
         }
