@@ -13,7 +13,7 @@ pipeline {
         stage('List Remote Files') {
             steps {
                 sshagent(['docker-server']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@65.0.170.92 "docker build -t farhancool/pyapp:v1 ."'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.207.102.132 "docker build -t farhancool/pyapp:v1 ."'
                     }
                 }
         }
