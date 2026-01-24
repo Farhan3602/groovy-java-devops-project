@@ -7,7 +7,7 @@ pipeline {
                 // Fetch the repository using SSH credentials
                 git branch: 'main', url: 'https://github.com/Farhan3602/Java-DevOps-Project'
                 //sh "scp -r * ubuntu@65.0.170.92:/home/ubuntu"
-                sh 'scp -o StrictHostKeyChecking=no -r transfer ubuntu@15.207.102.132:/home/ubuntu'
+                sh 'scp -o StrictHostKeyChecking=no -r * ubuntu@15.207.102.132:/home/ubuntu'
             }
         }
         stage('List Remote Files') {
