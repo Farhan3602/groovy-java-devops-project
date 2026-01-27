@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sshagent(['docker-server']) {
                     sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.201.178.164 "docker build -t farhancool/krish:$BUILD_ID ."'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.201.178.164 "docker tag  farhancool/krish:$BUILD_ID farhancool:latest "'
                     }
                 }
         }
