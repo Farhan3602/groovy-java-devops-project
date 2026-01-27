@@ -10,10 +10,10 @@ pipeline {
                 sh 'scp -o StrictHostKeyChecking=no -r * ubuntu@15.206.164.15:/home/ubuntu'
             }
         }
-        stage('List Remote Files') {
+        stage('creating a docker image') {
             steps {
                 sshagent(['docker-server']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker build -t farhancool/pyapp:v1 ."'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker build -t farhancool/krish:$BUILD_ID ."'
                     }
                 }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
             withCredentials([string(credentialsId: 'farhancool', variable: 'DockerPass')]) {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker login -u farhancool -p ${DockerPass}"'
-                sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker image push farhancool/krish:v1.$BUILD_ID"'
+                sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker image push farhancool/krish:$BUILD_ID"'
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker image push farhancool/krish:latest"'
                 }
             }
