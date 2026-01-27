@@ -18,11 +18,13 @@ pipeline {
                 }
         }
         stage{'Push Image to DockerHub'}{
+            steps {
             withCredentials([string(credentialsId: 'farhancool', variable: 'DockerPass')]) {
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker login -u farhancool -p ${DockerPass}"'
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker image push farhancool/krish:v1.$BUILD_ID"'
                 sh 'ssh -o StrictHostKeyChecking=no ubuntu@15.206.164.15 "docker image push farhancool/krish:latest"'
+                }
+            }
         }
-    }
     }
 }
